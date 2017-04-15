@@ -529,7 +529,7 @@ void BufferTxDMAActivate(unsigned int txBuf, unsigned short numSamples,
 ** The main function. Application starts here.
 */
 
-#include <ti/dsplib/dsplib.h>
+
 
 int main(void)
 {
@@ -621,7 +621,7 @@ int main(void)
                    (void *)rxBufPtr[lastFullRxBuf],
                    AUDIO_BUF_SIZE);
 
-            DSPF_sp_lms(NULL, NULL, NULL, NULL, 0.0, 0.0, 0, 0);
+
 
             /*
             ** Send the buffer by setting the DMA params accordingly.
