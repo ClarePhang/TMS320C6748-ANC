@@ -39,6 +39,7 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C6000_8.1.compilerID.INCLUDE_PATH.1037606038" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.C6000_8.1.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${INHERITED_INCLUDE_PATH}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${TI_MAS_DSPLIB_C674X_INSTALL_DIR}/packages/&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${TI_MAS_DSPLIB_C674X_INCLUDE_PATH}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STARTERWARE_ROOT}/include/c674x&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STARTERWARE_ROOT}/include/c674x/c6748/&quot;"/>
@@ -66,6 +67,7 @@
 								<option id="com.ti.ccstudio.buildDefinitions.C6000_8.1.linkerID.OUTPUT_FILE.556040468" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.C6000_8.1.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C6000_8.1.linkerID.LIBRARY.1725611315" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.C6000_8.1.linkerID.LIBRARY" valueType="libs">
 									<listOptionValue builtIn="false" value="${INHERITED_LIBRARIES}"/>
+									<listOptionValue builtIn="false" value="dsplib.lib"/>
 									<listOptionValue builtIn="false" value="${TI_MAS_DSPLIB_C674X_LIBRARIES}"/>
 									<listOptionValue builtIn="false" value="libc.a"/>
 									<listOptionValue builtIn="false" value="system_config.lib"/>
@@ -74,6 +76,7 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C6000_8.1.linkerID.SEARCH_PATH.880567109" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.C6000_8.1.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${INHERITED_LIBRARY_PATH}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${TI_MAS_DSPLIB_C674X_INSTALL_DIR}/packages/ti/dsplib/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${TI_MAS_DSPLIB_C674X_LIBRARY_PATH}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/system_config_c674x_c6748/Debug}&quot;"/>
