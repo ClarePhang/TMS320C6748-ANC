@@ -611,7 +611,12 @@ int main(void)
     */
     while(1)
     {
+        unsigned int data;
+        while(McASPRxStatusGet(SOC_MCASP_0_CTRL_REGS) & MCASP_RX_STAT_DATAREADY == 0)
+            ;
+        data = McASPRxBufRead(SOC_MCASP_0_DATA_REGS, MCASP_XSER_RX);
 
+        McASPTxBufWrite(SOC_MCASP_0_DATA_REGS, MCASP_XSER_TX, data);
     }
 }
 
