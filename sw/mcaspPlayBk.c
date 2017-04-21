@@ -561,8 +561,11 @@ int main(void)
     /* Initialize the I2C 0 interface for the codec AIC31 */
     I2CCodecIfInit(SOC_I2C_0_REGS, INT_CHANNEL_I2C, I2C_SLAVE_CODEC_AIC31);
 
+    /* Deshabilitamos la DMA */
+#if 0
     EDMA3Init(SOC_EDMA30CC_0_REGS, 0);
     EDMA3IntSetup();
+#endif
 
     McASPErrorIntSetup();
 
@@ -579,14 +582,19 @@ int main(void)
     ** Request EDMA channels. Channel 0 is used for reception and
     ** Channel 1 is used for transmission
     */
+
+    /* Deshabilitamos la DMA */
+#if 0
     EDMA3RequestChannel(SOC_EDMA30CC_0_REGS, EDMA3_CHANNEL_TYPE_DMA,
                         EDMA3_CHA_MCASP0_TX, EDMA3_CHA_MCASP0_TX, 0);
     EDMA3RequestChannel(SOC_EDMA30CC_0_REGS, EDMA3_CHANNEL_TYPE_DMA,
                         EDMA3_CHA_MCASP0_RX, EDMA3_CHA_MCASP0_RX, 0);
+#endif
 
     /* Initialize the DMA parameters */
+#if 0
     I2SDMAParamInit();
-
+#endif
     /* Configure the Codec for I2S mode */
     AIC31I2SConfigure();
 
@@ -603,36 +611,7 @@ int main(void)
     */
     while(1)
     {
-        if(lastFullRxBuf != lastSentTxBuf)
-        {
-            /*
-            ** Start the transmission from the link paramset. The param set
-            ** 1 will be linked to param set at PAR_TX_START. So do not
-            ** update paRAM set1.
-            */
-            parToSend =  PAR_TX_START + (parOffTxToSend % NUM_PAR);
-            parOffTxToSend = (parOffTxToSend + 1) % NUM_PAR;
-            parToLink  = PAR_TX_START + parOffTxToSend;
 
-            lastSentTxBuf = (lastSentTxBuf + 1) % NUM_BUF;
-
-            /* Copy the buffer */
-            memcpy((void *)txBufPtr[lastSentTxBuf],
-                   (void *)rxBufPtr[lastFullRxBuf],
-                   AUDIO_BUF_SIZE);
-
-
-
-            /*
-            ** Send the buffer by setting the DMA params accordingly.
-            ** Here the buffer to send and number of samples are passed as
-            ** parameters. This is important, if only transmit section
-            ** is to be used.
-            */
-            BufferTxDMAActivate(lastSentTxBuf, NUM_SAMPLES_PER_AUDIO_BUF,
-                                (unsigned short)parToSend,
-                                (unsigned short)parToLink);
-        }
     }
 }
 
