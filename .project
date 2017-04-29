@@ -5,6 +5,7 @@
 	<projects>
 		<project>drivers_c674x_c6748</project>
 		<project>system_config_c674x_c6748</project>
+		<project>platform_c674x_c6748_lcdkC6748</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

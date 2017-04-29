@@ -102,6 +102,7 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
 				<externalSettings containerId="drivers_c674x_c6748;com.ti.ccstudio.buildDefinitions.C6000.Debug.616832960" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
 				<externalSettings containerId="system_config_c674x_c6748;com.ti.ccstudio.buildDefinitions.C6000.Debug.999994599" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="platform_c674x_c6748_lcdkC6748;com.ti.ccstudio.buildDefinitions.C6000.Debug.1842998587" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
 			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="com.ti.ccstudio.buildDefinitions.C6000.Release.219374103">
