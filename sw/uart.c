@@ -2,14 +2,23 @@
  * uart.c
  *
  *  Created on: 29 abr. 2017
- *      Author: mat
+ *      Author: Matías Silva Bustos.
  */
 
 #include <uart.h>
 #include <soc_C6748.h>
+#include <hw_psc_C6748.h>
+#include <psc.h>
+#include <interrupt.h>
+#include <lcdkC6748.h>
+#include <hw_types.h>
+
+static void UARTIsr();
 
 void inicializarUART()
 {
+    int config = 0;
+    int intFlags = 0;
 
     /* Enabling the PSC for UART2.*/
     PSCModuleControl(SOC_PSC_1_REGS, HW_PSC_UART2, PSC_POWERDOMAIN_ALWAYS_ON,
@@ -33,6 +42,30 @@ void inicializarUART()
    IntEventMap(C674X_MASK_INT4, SYS_INT_UART2_INT);
    IntEnable(C674X_MASK_INT4);
 
+   /* Preparing the 'intFlags' variable to be passed as an argument.*/
+       intFlags |= (UART_INT_LINE_STAT  |  \
+                    UART_INT_TX_EMPTY |    \
+                    UART_INT_RXDATA_CTI);
 
+       /* Enable the Interrupts in UART.*/
+       UARTIntEnable(SOC_UART_2_REGS, intFlags);
 
+}
+
+static void UARTIsr()
+{
+    int int_id;
+    int rxData;
+
+    /* This determines the cause of UART2 interrupt.*/
+    int_id = UARTIntStatus(SOC_UART_2_REGS);
+
+    switch(int_id){
+    case UART_INTID_RX_DATA:
+        rxData = UARTCharGetNonBlocking(SOC_UART_2_REGS);
+        UARTCharPutNonBlocking(SOC_UART_2_REGS, rxData);
+        break;
+    }
+
+    return;
 }
