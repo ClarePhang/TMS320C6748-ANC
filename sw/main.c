@@ -4,6 +4,10 @@
 
 extern void inicializarUART();
 
+static inline void main_loop()
+{
+
+}
 void main()
 {
     // Initialize the DSP INTC
@@ -14,5 +18,6 @@ void main()
     // Enable DSP interrupts globally
     IntGlobalEnable();
 
-    while(1);
+    while(1)
+        main_loop();
 }
