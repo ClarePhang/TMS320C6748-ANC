@@ -6,10 +6,10 @@ extern void inicializarUART();
 
 void main()
 {
-    inicializarUART();
-
     // Initialize the DSP INTC
     IntDSPINTCInit();
+
+    inicializarUART();
 
     // Enable DSP interrupts globally
     IntGlobalEnable();
