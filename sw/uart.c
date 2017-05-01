@@ -46,9 +46,10 @@ void inicializarUART()
        intFlags |= (UART_INT_LINE_STAT  |  \
                     UART_INT_TX_EMPTY |    \
                     UART_INT_RXDATA_CTI);
-
+#if 0
        /* Enable the Interrupts in UART.*/
        UARTIntEnable(SOC_UART_2_REGS, intFlags);
+#endif
 
 }
 
